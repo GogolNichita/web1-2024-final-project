@@ -5,7 +5,7 @@ import Footer from "../Components/Layout-Components/Footer";
 export default function MainPage() {
     return (
         <>
-            <NavBar/>
+            <NavBar account={false}/>
             <h2>MAIN PAGE</h2>
             <Footer/>
         </>

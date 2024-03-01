@@ -1,15 +1,18 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import "./NavBar.css";
-export default function NavBar() {
+
+export default function NavBar({account}) {
     return (
         <>
             <nav>
-                <span>PRIME CAR</span>
-                <ul className="navbutton">
+                <ul className="logo">
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/">PRIME CAR</Link>
                     </li>
+                </ul>
+                {
+                   !account && <ul className="navbutton">
                     <li>
                         <a href="#about-us">About</a>
                     </li>
@@ -20,7 +23,9 @@ export default function NavBar() {
                         <a href="#cars">Cars</a>
                     </li>
                 </ul>
-                <ul className="button">
+                }
+                {
+                    !account && <ul className="button">
                     <li>
                         <a href="#contact-us">Contact Us</a>
                     </li>
@@ -28,6 +33,7 @@ export default function NavBar() {
                         <Link to="/account">Account</Link>
                     </li>
                 </ul>
+                }
             </nav>
         </>
     );
