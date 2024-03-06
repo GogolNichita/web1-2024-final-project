@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../Layout-Components/NavBar";
+import NavBar from "../Layout-Components/NavBar";
 import "./Header.css";
 
 export default function (){
@@ -12,7 +12,7 @@ export default function (){
                 </h1>
                 <h3>The most beloved cars of the moment for those who want to ride in style without spending too
                     much</h3>
-                <button><a href="#cars"> Discover</a></button>
+                <button><a href="#cars"> Discover <img src="img/Vector.svg" alt=""/></a></button>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 .header{
-    background-image: url("../../../assets/img/Background.png");
+    background-image: url("../../img/Background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
@@ -19,12 +19,18 @@
 }
 
 .headerText h1{
+    font-family: 'American Captain';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 130px;
     text-align: right;
     width: 50%;
     margin: 0 0 auto;
 }
 
 .headerText h3{
+    font-family: 'SF Pro Display';
+    font-style: normal;
     font-weight: 500;
     font-size: 26px;
     line-height: 38px;
