@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../Components/Layout-Components/NavBar";
-import Footer from "../Components/Layout-Components/Footer";
+import Footer from "../Components/Layout-Components/Footer/Footer";
 
 export default function Account() {
     return (
