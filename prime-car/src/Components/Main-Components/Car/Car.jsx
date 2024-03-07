@@ -13,22 +13,21 @@ import Car9 from "../../../assets/img/Car9.png";
 
 export default function Car(){
     return(
-        <section class="cars">
+        <section className="cars">
             <h1>The cars that are hot right now</h1>
             <p>Buy yours and be the most stylish in the neighborhood</p>
-            <div class="structure2">
+            <div className="structure2">
                 <img src={Car1} alt=""/>
                     <img src={Car2} alt=""/>
                         <img src={Car3} alt=""/>
                             <img src={Car4} alt=""/>
             </div>
-            <div class="structure2">
+            <div className="structure2">
                 <img src={Car5} alt=""/>
                     <img src={Car6} alt=""/>
                         <img src={Car7} alt=""/>
                             <img src={Car8} alt=""/>
                                 <img src={Car9} alt=""/>
-
             </div>
         </section>
 );
