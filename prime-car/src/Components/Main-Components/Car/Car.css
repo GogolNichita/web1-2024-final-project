@@ -1,0 +1,15 @@
+.cars h1{
+    text-align: center;
+    margin: 50px 50px 20px;
+    font-size: 110px;
+}
+
+.cars p{
+    text-align: center;
+    margin: 20px 50px 2em;
+}
+
+.cars div.structure2{
+    width: 69%;
+    margin-top: 0;
+}
