@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {CssVarsProvider, /*useColorScheme */} from '@mui/joy/styles';
+import {CssVarsProvider} from '@mui/joy/styles';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
@@ -8,42 +8,15 @@ import Checkbox from '@mui/joy/Checkbox';
 import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
-// import IconButton, { IconButtonProps } from '@mui/joy/IconButton';
 import Link from '@mui/joy/Link';
 import Input from '@mui/joy/Input';
 import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
-// import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
-// import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
-// import BadgeRoundedIcon from '@mui/icons-material/BadgeRounded';
 import GoogleIcon from './GoogleIcon';
-// import NavBar from "../../Layout-Components/NavBar/NavBar";
-
-// function ColorSchemeToggle(props) {
-//     const { onClick, ...other } = props;
-//     const { mode, setMode } = useColorScheme();
-//     const [mounted, setMounted] = React.useState(false);
-//
-//     React.useEffect(() => setMounted(true), []);
-//
-//     return (
-//         React.createElement(IconButton, {
-//             "aria-label": "toggle light/dark mode",
-//             size: "sm",
-//             variant: "outlined",
-//             disabled: !mounted,
-//             onClick: (event) => {
-//                 setMode(mode === 'light' ? 'dark' : 'light');
-//                 onClick?.(event);
-//             },
-//             ...other
-//         }, mode === 'light' ? React.createElement(DarkModeRoundedIcon, null) : React.createElement(LightModeRoundedIcon, null))
-//     );
-// }
 
 export default function SignIn() {
     return (
-        React.createElement(CssVarsProvider, {defaultMode: "dark", disableTransitionOnChange: true},
+        React.createElement(CssVarsProvider, null,
             React.createElement(CssBaseline, null),
             React.createElement(GlobalStyles, {
                 styles: {
@@ -54,20 +27,15 @@ export default function SignIn() {
                 }
             }),
             React.createElement(Box, {
-                    sx: (theme) => ({
+                    sx: {
                         width: {xs: '100%', md: '50vw'},
-                        transition: 'width var(--Transition-duration)',
-                        transitionDelay: 'calc(var(--Transition-duration) + 0.1s)',
                         position: 'relative',
                         zIndex: 1,
                         display: 'flex',
                         justifyContent: 'flex-end',
                         backdropFilter: 'blur(12px)',
-                        backgroundColor: 'rgba(255 255 255 / 0.2)',
-                        [theme.getColorSchemeSelector('dark')]: {
-                            backgroundColor: 'rgba(19 19 24 / 0.4)',
-                        },
-                    })
+                        backgroundColor: 'rgba(19 19 24 / 0.4)',
+                    }
                 },
                 React.createElement(Box, {
                         sx: {
@@ -78,25 +46,6 @@ export default function SignIn() {
                             px: 2,
                         }
                     },
-                    // React.createElement(Box, {
-                    //         component: "header",
-                    //         sx: {
-                    //             py: 3,
-                    //             display: 'flex',
-                    //             justifyContent: 'space-between',
-                    //         }
-                    //     },
-                    //     React.createElement(Box, {
-                    //             sx: { gap: 2, display: 'flex', alignItems: 'center' }
-                    //         },
-                    //         // React.createElement(IconButton, {
-                    //         //         variant: "soft",
-                    //         //         color: "primary",
-                    //         //         size: "sm"
-                    //         //     },
-                    //         //     React.createElement(BadgeRoundedIcon, null)
-                    //         // ),
-
                     React.createElement(Link, {
                             href: "/",
                             level: "title-lg",
@@ -114,10 +63,6 @@ export default function SignIn() {
                             }
                         },
                         "Prime Car"),
-
-                    //     ),
-                    //     React.createElement(ColorSchemeToggle, null)
-                    // ),
                     React.createElement(Box, {
                             component: "main",
                             sx: {
@@ -143,7 +88,6 @@ export default function SignIn() {
                         },
                         React.createElement(Stack, {gap: 4, sx: {mb: 2}},
                             React.createElement(Stack, {gap: 1},
-                                // <NavBar account={true}/>,
                                 React.createElement(Typography, {component: "h1", level: "h3"}, "Sign in"),
                                 React.createElement(Typography, {level: "body-sm"},
                                     "New at Prime Car? ",
@@ -160,13 +104,7 @@ export default function SignIn() {
                                 startDecorator: React.createElement(GoogleIcon, null)
                             }, "Continue with Google")
                         ),
-                        React.createElement(Divider, {
-                            sx: (theme) => ({
-                                [theme.getColorSchemeSelector('light')]: {
-                                    color: {xs: '#FFF', md: 'text.tertiary'},
-                                },
-                            })
-                        }, "or"),
+                        React.createElement(Divider, null, "or"),
                         React.createElement(Stack, {gap: 4, sx: {mt: 2}},
                             React.createElement("form", {
                                     onSubmit: (event) => {
@@ -223,27 +161,20 @@ export default function SignIn() {
                 )
             ),
             React.createElement(Box, {
-                sx: (theme) => ({
+                sx:{
                     height: '100%',
                     position: 'fixed',
                     right: 0,
                     top: 0,
                     bottom: 0,
                     left: {xs: 0, md: '50vw'},
-                    transition:
-                        'background-image var(--Transition-duration), left var(--Transition-duration) !important',
-                    transitionDelay: 'calc(var(--Transition-duration) + 0.1s)',
                     backgroundColor: 'background.level1',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
                     backgroundImage:
-                        'url(https://images.unsplash.com/photo-1527181152855-fc03fc7949c8?auto=format&w=1000&dpr=2)',
-                    [theme.getColorSchemeSelector('dark')]: {
-                        backgroundImage:
-                            'url(https://images.unsplash.com/photo-1572072393749-3ca9c8ea0831?auto=format&w=1000&dpr=2)',
-                    },
-                })
+                        'url(https://images.unsplash.com/photo-1572072393749-3ca9c8ea0831?auto=format&w=1000&dpr=2)',
+                }
             })
         )
     );
