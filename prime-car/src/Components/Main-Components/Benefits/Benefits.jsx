@@ -6,9 +6,9 @@ import Key from "../../../assets/img/KEY.png";
 import CircleLine1 from "../../../assets/img/Line1.svg";
 // import CircleLine2 from "../../../assets/img/Line2.svg";
 
-export default function Benefits(){
-    return(
-            <a name="benefits">
+export default function Benefits() {
+    return (
+        <a name="benefits">
             <section className="benefits">
                 <img id="circle-line" src={CircleLine1} alt=""/>
                 <div className="structure">
@@ -35,6 +35,6 @@ export default function Benefits(){
                 </div>
                 {/*<img id="circle-line2" src={CircleLine2} alt=""/>*/}
             </section>
-            </a>
+        </a>
     );
 }

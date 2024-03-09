@@ -2,8 +2,8 @@ import React from "react";
 import NavBar from "../../Layout-Components/NavBar/NavBar";
 import "./Header.css";
 
-export default function (){
-    return(
+export default function () {
+    return (
         <div className="header">
             <NavBar account={false}/>
             <div className="headerText">

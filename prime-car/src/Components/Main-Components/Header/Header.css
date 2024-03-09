@@ -1,11 +1,11 @@
-.header{
+.header {
     background-image: url("../../../assets/img/Background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
 }
 
-.headerText{
+.headerText {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -18,13 +18,13 @@
     text-decoration: none;
 }
 
-.headerText h1{
+.headerText h1 {
     text-align: right;
     width: 50%;
     margin: 0 0 auto;
 }
 
-.headerText h3{
+.headerText h3 {
     font-weight: 500;
     font-size: 26px;
     line-height: 38px;
@@ -33,7 +33,7 @@
     margin-top: 0;
 }
 
-.headerText button{
+.headerText button {
     background: none;
     border: 2px solid white;
     border-radius: 8px;

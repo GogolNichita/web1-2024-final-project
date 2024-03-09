@@ -10,25 +10,24 @@ import Car7 from "../../../assets/img/Car7.png";
 import Car8 from "../../../assets/img/Car8.png";
 import Car9 from "../../../assets/img/Car9.png";
 
-
-export default function Car(){
-    return(
+export default function Car() {
+    return (
         <section className="cars">
             <h1>The cars that are hot right now</h1>
             <p>Buy yours and be the most stylish in the neighborhood</p>
             <div className="structure2">
                 <img src={Car1} alt=""/>
-                    <img src={Car2} alt=""/>
-                        <img src={Car3} alt=""/>
-                            <img src={Car4} alt=""/>
+                <img src={Car2} alt=""/>
+                <img src={Car3} alt=""/>
+                <img src={Car4} alt=""/>
             </div>
             <div className="structure2">
                 <img src={Car5} alt=""/>
-                    <img src={Car6} alt=""/>
-                        <img src={Car7} alt=""/>
-                            <img src={Car8} alt=""/>
-                                <img src={Car9} alt=""/>
+                <img src={Car6} alt=""/>
+                <img src={Car7} alt=""/>
+                <img src={Car8} alt=""/>
+                <img src={Car9} alt=""/>
             </div>
         </section>
-);
+    );
 }

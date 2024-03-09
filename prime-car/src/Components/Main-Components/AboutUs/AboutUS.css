@@ -1,33 +1,33 @@
-.about-us{
+.about-us {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.about-us h1{
+.about-us h1 {
     text-align: center;
     margin: 0 0 20px 0;
 }
 
 .about-us div.structure {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     margin-bottom: 3%;
 }
 
-.about-us div p{
+.about-us div p {
     font-weight: 400;
     padding-left: 5%;
 }
 
-.about-us div img{
+.about-us div img {
     padding-left: 5%;
     width: 95%;
     z-index: 1;
 }
 
-.about-us h2{
+.about-us h2 {
     font-size: 200px;
     line-height: 239px;
     text-transform: lowercase;
