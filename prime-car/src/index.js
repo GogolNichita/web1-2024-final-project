@@ -7,6 +7,7 @@ import MainPage from "./Pages/MainPage";
 import SignIn from "./Components/Accout-Components/SignIn/SignIn";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Account from "./Pages/Account";
+import SignUp from "./Components/Accout-Components/SignUp/SignUp";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,14 @@ const router = createBrowserRouter([
     {
         path: "/account",
         element: <Account isLoggin={false}/>,
+    },
+    {
+        path: "/signIn",
+        element: <SignIn/>,
+    },
+    {
+        path: "/signUp",
+        element: <SignUp/>,
     }
 ]);
 

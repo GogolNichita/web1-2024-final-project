@@ -92,7 +92,7 @@ export default function SignIn() {
                                 React.createElement(Typography, {level: "body-sm"},
                                     "New at Prime Car? ",
                                     React.createElement(Link, {
-                                        href: "#replace-with-a-link",
+                                        href: "/signUp",
                                         level: "title-sm"
                                     }, "Sign up!")
                                 )
