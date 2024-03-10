@@ -12,6 +12,7 @@ import Car9 from "../../../assets/img/Car9.png";
 
 export default function Car() {
     return (
+        <a name="cars">
         <section className="cars">
             <h1>The cars that are hot right now</h1>
             <p>Buy yours and be the most stylish in the neighborhood</p>
@@ -29,5 +30,6 @@ export default function Car() {
                 <img src={Car9} alt=""/>
             </div>
         </section>
+        </a>
     );
 }
