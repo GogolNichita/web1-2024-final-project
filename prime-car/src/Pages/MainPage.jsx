@@ -6,6 +6,7 @@ import Benefits from "../Components/Main-Components/Benefits/Benefits";
 import Car from "../Components/Main-Components/Car/Car";
 import Amazed from "../Components/Main-Components/Amazed/Amazed";
 import ContactUs from "../Components/Main-Components/ContactUs/ContactUs";
+import Map from "../Components/Main-Components/Map/Map";
 
 export default function MainPage() {
     return (
@@ -16,6 +17,7 @@ export default function MainPage() {
             <Car/>
             <Amazed/>
             <ContactUs/>
+            <Map/>
             <Footer/>
         </>
     );

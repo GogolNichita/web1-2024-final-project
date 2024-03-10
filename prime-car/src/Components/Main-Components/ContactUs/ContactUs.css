@@ -1,11 +1,11 @@
-.contact-us{
+.contact-us {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 3% 3% 5%;
 }
 
-.contact-us h2{
+.contact-us h2 {
     font-size: 245px;
     line-height: 295px;
     color: #373737;
@@ -16,25 +16,25 @@
     opacity: 0.3;
 }
 
-.contact-us h1{
+.contact-us h1 {
     font-size: 120px;
     margin: 0;
 }
 
-.contact-us h3{
+.contact-us h3 {
     font-size: 30px;
     line-height: 50px;
     width: 57%;
     margin: 0;
 }
 
-.contact-us div.structure{
+.contact-us div.structure {
     display: grid;
-    grid-template-rows: repeat(3,100px);
-    grid-template-columns: repeat(2,300px);
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(2, 300px);
 }
 
-.contact-us div.structure input{
+.contact-us div.structure input {
     width: 95%;
     padding: 0 0 5px 0;
     background-color: #161616;
@@ -43,11 +43,11 @@
     border-bottom: 1px solid white;
 }
 
-.contact-us div.structure input::placeholder{
+.contact-us div.structure input::placeholder {
     color: white;
 }
 
-.contact-us div.structure select{
+.contact-us div.structure select {
     border: none;
     background: #161616;
     border-bottom: 1px solid white;
@@ -55,11 +55,11 @@
     color: white;
 }
 
-.contact-us div.structure input.text{
+.contact-us div.structure input.text {
     width: 200%;
 }
 
-.contact-us input[type="submit"]{
+.contact-us input[type="submit"] {
     background-color: #161616;
     color: white;
     border: 1px solid white;
