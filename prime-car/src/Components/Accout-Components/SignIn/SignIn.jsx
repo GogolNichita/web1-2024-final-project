@@ -161,7 +161,7 @@ export default function SignIn() {
                 )
             ),
             React.createElement(Box, {
-                sx:{
+                sx: {
                     height: '100%',
                     position: 'fixed',
                     right: 0,

@@ -5,6 +5,7 @@ import AboutUs from "../Components/Main-Components/AboutUs/AboutUs";
 import Benefits from "../Components/Main-Components/Benefits/Benefits";
 import Car from "../Components/Main-Components/Car/Car";
 import Amazed from "../Components/Main-Components/Amazed/Amazed";
+import ContactUs from "../Components/Main-Components/ContactUs/ContactUs";
 
 export default function MainPage() {
     return (
@@ -14,6 +15,7 @@ export default function MainPage() {
             <Benefits/>
             <Car/>
             <Amazed/>
+            <ContactUs/>
             <Footer/>
         </>
     );

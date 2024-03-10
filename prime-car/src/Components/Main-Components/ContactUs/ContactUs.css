@@ -1,0 +1,68 @@
+.contact-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 3% 5%;
+}
+
+.contact-us h2{
+    font-size: 245px;
+    line-height: 295px;
+    color: #373737;
+    z-index: -1;
+    position: absolute;
+    left: -30px;
+    top: 3920px;
+    opacity: 0.3;
+}
+
+.contact-us h1{
+    font-size: 120px;
+    margin: 0;
+}
+
+.contact-us h3{
+    font-size: 30px;
+    line-height: 50px;
+    width: 57%;
+    margin: 0;
+}
+
+.contact-us div.structure{
+    display: grid;
+    grid-template-rows: repeat(3,100px);
+    grid-template-columns: repeat(2,300px);
+}
+
+.contact-us div.structure input{
+    width: 95%;
+    padding: 0 0 5px 0;
+    background-color: #161616;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+.contact-us div.structure input::placeholder{
+    color: white;
+}
+
+.contact-us div.structure select{
+    border: none;
+    background: #161616;
+    border-bottom: 1px solid white;
+    padding: 0 0 5px 0;
+    color: white;
+}
+
+.contact-us div.structure input.text{
+    width: 200%;
+}
+
+.contact-us input[type="submit"]{
+    background-color: #161616;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px 30px;
+}
