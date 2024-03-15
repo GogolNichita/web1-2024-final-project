@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {CssVarsProvider} from '@mui/joy/styles';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
@@ -13,8 +13,35 @@ import Input from '@mui/joy/Input';
 import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
 import GoogleIcon from './GoogleIcon';
+import { supabase } from './supabaseClient';
 
 export default function SignIn() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const handleLogin = async (event) => {
+        event.preventDefault();
+        try {
+            const {user, error} = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password,
+            });
+
+            if (error) {
+                console.error('Error logging in:', error.message);
+                alert('Error logging in: ' + error.message);
+                return;
+            }
+
+            console.log('User logged in:', user);
+            alert('Thx, for LoggIn!')
+            // Redirect or perform other actions upon successful login
+        } catch (error) {
+            console.error('Error logging in ', error.message);
+            alert('Error logging in: ' + error.message);
+            // Handle login error, e.g., display an error message to the user
+        }
+    };
+
     return (
         React.createElement(CssVarsProvider, null,
             React.createElement(CssBaseline, null),
@@ -23,6 +50,7 @@ export default function SignIn() {
                     ':root': {
                         '--Form-maxWidth': '800px',
                         '--Transition-duration': '0.4s', // set to `none` to disable transition
+                        'overflow': 'hidden',
                     },
                 }
             }),
@@ -106,47 +134,46 @@ export default function SignIn() {
                         ),
                         React.createElement(Divider, null, "or"),
                         React.createElement(Stack, {gap: 4, sx: {mt: 2}},
-                            React.createElement("form", {
-                                    onSubmit: (event) => {
-                                        event.preventDefault();
-                                        const formElements = event.currentTarget.elements;
-                                        const data = {
-                                            email: formElements.email.value,
-                                            password: formElements.password.value,
-                                            persistent: formElements.persistent.checked,
-                                        };
-                                        alert(JSON.stringify(data, null, 2));
-                                    }
+                            React.createElement(
+                                'form',
+                                {
+                                    onSubmit: handleLogin,
                                 },
-                                React.createElement(FormControl, {required: true},
-                                    React.createElement(FormLabel, null, "Email"),
-                                    React.createElement(Input, {type: "email", name: "email"})
+                                React.createElement(
+                                    FormControl,
+                                    { required: true },
+                                    React.createElement(FormLabel, null, 'Email'),
+                                    React.createElement(Input, { type: 'email', name: 'email', onChange: (e) => setEmail(e.target.value) })
                                 ),
-                                React.createElement(FormControl, {required: true},
-                                    React.createElement(FormLabel, null, "Password"),
-                                    React.createElement(Input, {type: "password", name: "password"})
+                                React.createElement(
+                                    FormControl,
+                                    { required: true },
+                                    React.createElement(FormLabel, null, 'Password'),
+                                    React.createElement(Input, { type: 'password', name: 'password', onChange: (e) => setPassword(e.target.value) })
                                 ),
-                                React.createElement(Stack, {gap: 4, sx: {mt: 2}},
-                                    React.createElement(Box, {
+                                React.createElement(
+                                    Stack,
+                                    { gap: 4, sx: { mt: 2 } },
+                                    React.createElement(
+                                        Box,
+                                        {
                                             sx: {
                                                 display: 'flex',
                                                 justifyContent: 'space-between',
                                                 alignItems: 'center',
-                                            }
+                                            },
                                         },
                                         React.createElement(Checkbox, {
-                                            size: "sm",
-                                            label: "Remember me",
-                                            name: "persistent"
+                                            size: 'sm',
+                                            label: 'Remember me',
+                                            name: 'persistent',
                                         }),
-                                        React.createElement(Link, {
-                                            level: "title-sm",
-                                            href: "#replace-with-a-link"
-                                        }, "Forgot your password?")
+                                        React.createElement(Link, { level: 'title-sm', href: '#replace-with-a-link' }, 'Forgot your password?')
                                     ),
-                                    React.createElement(Button, {type: "submit", fullWidth: true}, "Sign in")
+                                    React.createElement(Button, { type: 'submit', fullWidth: true }, 'Sign in')
                                 )
                             )
+
                         )
                     ),
                     React.createElement(Box, {
