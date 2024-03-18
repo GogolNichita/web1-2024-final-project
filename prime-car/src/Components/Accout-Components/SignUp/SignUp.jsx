@@ -35,6 +35,7 @@ export default function SignUp() {
                 options: {
                     data: {
                         first_name: data.get('firstName'),
+                        family_name: data.get('lastName'),
                     }
                 }
             });
