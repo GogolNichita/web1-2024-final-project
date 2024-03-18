@@ -13,7 +13,7 @@ import Input from '@mui/joy/Input';
 import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
 import GoogleIcon from './GoogleIcon';
-import { supabase } from './supabaseClient';
+import { supabase } from '../../../assets/supabaseClient';
 
 export default function SignIn() {
     const [email, setEmail] = useState('');

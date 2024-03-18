@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import {supabase} from "../../../assets/supabaseClient";
 
 function Copyright(props) {
     return (
@@ -24,13 +25,34 @@ function Copyright(props) {
 }
 
 export default function SignUp() {
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        try {
+            const {user, error} = await supabase.auth.signUp({
+                email: data.get('email'),
+                password: data.get('password'),
+                options: {
+                    data: {
+                        first_name: data.get('firstName'),
+                    }
+                }
+            });
+
+            if (error) {
+                console.error('Error registration in:', error.message);
+                alert('Error registration in: ' + error.message);
+                return;
+            }
+
+            console.log('User registration in:', user);
+            alert('Thx, for registration!')
+            // Redirect or perform other actions upon successful Registration
+        } catch (error) {
+            console.error('Error registration in ', error.message);
+            alert('Error registration in: ' + error.message);
+            // Handle Registration error, e.g., display an error message to the user
+        }
     };
 
     return (
