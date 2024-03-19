@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { CssVarsProvider } from '@mui/joy/styles';
 import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
@@ -14,9 +13,6 @@ import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
 import GoogleIcon from './GoogleIcon';
 import { supabase } from '../../../assets/supabaseClient';
-
-var htmlElement = document.querySelector('html');
-htmlElement.setAttribute('data-joy-color-scheme', 'dark');
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
@@ -47,7 +43,7 @@ export default function SignIn() {
     };
 
     return (
-        <CssVarsProvider>
+        <Box sx={{backgroundColor: 'black'}}>
             <CssBaseline />
             <GlobalStyles
                 styles={{
@@ -120,39 +116,52 @@ export default function SignIn() {
                     >
                         <Stack gap={4} sx={{ mb: 2 }}>
                             <Stack gap={1}>
-                                <Typography component="h1" level="h3" color="white">
+                                <Typography component="h1" level="h3" sx={{color: '#CDD7E1'}}>
                                     Sign in
                                 </Typography>
-                                <Typography level="body-sm">
+                                <Typography level="body-sm" sx={{color: '#9FA6AD'}}>
                                     New at Prime Car?{' '}
-                                    <Link href="/signUp" level="title-sm">
+                                    <Link href="/signUp" level="title-sm" sx={{color: '#4393E4'}}>
                                         Sign up!
                                     </Link>
                                 </Typography>
                             </Stack>
                             <Button
                                 variant="soft"
-                                color="neutral"
+                                sx={{
+                                    backgroundColor: '#171A1C',
+                                    color: 'White'
+                                }}
                                 fullWidth
                                 startDecorator={<GoogleIcon />}
                             >
                                 Continue with Google
                             </Button>
                         </Stack>
-                        <Divider>or</Divider>
+                        <Divider sx={{color: '#9FA6AD'}}>or</Divider>
                         <Stack gap={4} sx={{ mt: 2 }}>
                             <form onSubmit={handleLogin}>
                                 <FormControl required>
-                                    <FormLabel>Email</FormLabel>
+                                    <FormLabel sx={{color: '#F0F4F8'}}>Email</FormLabel>
                                     <Input
+                                        sx={{
+                                            backgroundColor: '#0B0D0E',
+                                            borderColor:'#32383E',
+                                            color: '#ffffff'
+                                        }}
                                         type="email"
                                         name="email"
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </FormControl>
                                 <FormControl required>
-                                    <FormLabel>Password</FormLabel>
+                                    <FormLabel sx={{color: '#F0F4F8'}}>Password</FormLabel>
                                     <Input
+                                        sx={{
+                                            backgroundColor: '#0B0D0E',
+                                            borderColor:'#32383E',
+                                            color: '#ffffff'
+                                        }}
                                         type="password"
                                         name="password"
                                         onChange={(e) => setPassword(e.target.value)}
@@ -166,8 +175,24 @@ export default function SignIn() {
                                             alignItems: 'center',
                                         }}
                                     >
-                                        <Checkbox size="sm" label="Remember me" name="persistent" />
-                                        <Link level="title-sm" href="#replace-with-a-link">
+                                        <Checkbox
+                                            size="sm"
+                                            label="Remember me"
+                                            name="persistent"
+                                            sx={{
+                                                color: '#F0F4F8',
+                                                '& .MuiCheckbox-checkbox': {
+                                                    backgroundColor: '#0B0D0E',
+                                                    borderColor:'#32383E',
+                                                    borderRadius: '4px',
+                                                },
+                                                '& .MuiSvgIcon-root': {
+                                                    backgroundColor: '#0B6BCB',
+                                                    borderRadius: '4px',
+                                                },
+                                            }}
+                                        />
+                                        <Link level="title-sm" href="#replace-with-a-link" sx={{color: '#4393E4'}}>
                                             Forgot your password?
                                         </Link>
                                     </Box>
@@ -179,7 +204,7 @@ export default function SignIn() {
                         </Stack>
                     </Box>
                     <Box component="footer" sx={{ py: 3 }}>
-                        <Typography level="body-xs" textAlign="center">
+                        <Typography level="body-xs" textAlign="center" sx={{color: '#9FA6AD'}}>
                             © Prime Car {new Date().getFullYear()}
                         </Typography>
                     </Box>
@@ -201,6 +226,6 @@ export default function SignIn() {
                         'url(https://images.unsplash.com/photo-1572072393749-3ca9c8ea0831?auto=format&w=1000&dpr=2)',
                 }}
             />
-        </CssVarsProvider>
+        </Box>
     );
 }
