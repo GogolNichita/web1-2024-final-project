@@ -15,6 +15,9 @@ import Stack from '@mui/joy/Stack';
 import GoogleIcon from './GoogleIcon';
 import { supabase } from '../../../assets/supabaseClient';
 
+var htmlElement = document.querySelector('html');
+htmlElement.setAttribute('data-joy-color-scheme', 'dark');
+
 export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
