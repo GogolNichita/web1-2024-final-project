@@ -18,10 +18,36 @@ export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const handleLoginGoogle = async (event) => {
+        event.preventDefault();
+        try {
+
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: '/'
+                }
+            })
+
+            if (error) {
+                console.error('Error logging in:', error.message);
+                alert('Error logging in: ' + error.message);
+            }
+                else {
+                    console.log('User logged in:', email);
+                    alert('Thanks for logging in! ' + email);
+            }
+            // Redirect or perform other actions upon successful login
+        } catch (error) {
+            console.error('Error logging in ', error.message);
+            alert('Error logging in: ' + error.message);
+            // Handle login error, e.g., display an error message to the user
+        }
+    }
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const { user, error } = await supabase.auth.signInWithPassword({
+            const { error } = await supabase.auth.signInWithPassword({
                 email: email,
                 password: password,
             });
@@ -29,11 +55,11 @@ export default function SignIn() {
             if (error) {
                 console.error('Error logging in:', error.message);
                 alert('Error logging in: ' + error.message);
-                return;
             }
-
-            console.log('User logged in:', user);
-            alert('Thanks for logging in!');
+                else{
+                    console.log('User logged in:', email);
+                    alert('Thanks for logging in! ' + email);
+            }
             // Redirect or perform other actions upon successful login
         } catch (error) {
             console.error('Error logging in ', error.message);
@@ -126,7 +152,7 @@ export default function SignIn() {
                                     </Link>
                                 </Typography>
                             </Stack>
-                            <Button
+                            <Button onClick={handleLoginGoogle}
                                 variant="soft"
                                 sx={{
                                     backgroundColor: '#171A1C',
