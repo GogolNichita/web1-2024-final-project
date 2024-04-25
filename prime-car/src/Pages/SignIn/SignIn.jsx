@@ -3,26 +3,68 @@ import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
+import Checkbox from '@mui/joy/Checkbox';
+import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import Link from '@mui/joy/Link';
 import Input from '@mui/joy/Input';
 import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
-import { supabase } from '../../../assets/supabaseClient';
+import GoogleIcon from './GoogleIcon';
+import { supabase } from '../../assets/supabaseClient';
 
-export default function ForgetPassword() {
+export default function SignIn() {
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleForgetPassword = async () => {
+    const handleLoginGoogle = async (event) => {
+        event.preventDefault();
         try {
-            const { error } = await supabase.auth.resetPasswordForEmail(email);
+
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: '/'
+                }
+            })
+
             if (error) {
-                throw error;
+                console.error('Error logging in:', error.message);
+                alert('Error logging in: ' + error.message);
             }
-            alert('Password reset email sent!');
+                else {
+                    console.log('User logged in:', email);
+                    alert('Thanks for logging in! ' + email);
+            }
+            // Redirect or perform other actions upon successful login
         } catch (error) {
-            alert(error.message);
+            console.error('Error logging in ', error.message);
+            alert('Error logging in: ' + error.message);
+            // Handle login error, e.g., display an error message to the user
+        }
+    }
+    const handleLogin = async (event) => {
+        event.preventDefault();
+        try {
+            const { error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password,
+            });
+
+            if (error) {
+                console.error('Error logging in:', error.message);
+                alert('Error logging in: ' + error.message);
+            }
+                else{
+                    console.log('User logged in:', email);
+                    alert('Thanks for logging in! ' + email);
+            }
+            // Redirect or perform other actions upon successful login
+        } catch (error) {
+            console.error('Error logging in ', error.message);
+            alert('Error logging in: ' + error.message);
+            // Handle login error, e.g., display an error message to the user
         }
     };
 
@@ -55,7 +97,6 @@ export default function ForgetPassword() {
                         minHeight: '100vh',
                         width: '100%',
                         px: 2,
-                        justifyContent: 'center',
                     }}
                 >
                     <Link
@@ -79,7 +120,7 @@ export default function ForgetPassword() {
                     <Box
                         component="main"
                         sx={{
-                            my: '5vh',
+                            my: 'auto',
                             py: 2,
                             pb: 5,
                             display: 'flex',
@@ -102,13 +143,30 @@ export default function ForgetPassword() {
                         <Stack gap={4} sx={{ mb: 2 }}>
                             <Stack gap={1}>
                                 <Typography component="h1" level="h3" sx={{color: '#CDD7E1'}}>
-                                    Forget Password
+                                    Sign in
+                                </Typography>
+                                <Typography level="body-sm" sx={{color: '#9FA6AD'}}>
+                                    New at Prime Car?{' '}
+                                    <Link href="/signUp" level="title-sm" sx={{color: '#4393E4'}}>
+                                        Sign up!
+                                    </Link>
                                 </Typography>
                             </Stack>
+                            <Button onClick={handleLoginGoogle}
+                                variant="soft"
+                                sx={{
+                                    backgroundColor: '#171A1C',
+                                    color: 'White'
+                                }}
+                                fullWidth
+                                startDecorator={<GoogleIcon />}
+                            >
+                                Continue with Google
+                            </Button>
                         </Stack>
-
-                        <Stack gap={4} sx={{ mt: 0 }}>
-                            <form>
+                        <Divider sx={{color: '#9FA6AD'}}>or</Divider>
+                        <Stack gap={4} sx={{ mt: 2 }}>
+                            <form onSubmit={handleLogin}>
                                 <FormControl required>
                                     <FormLabel sx={{color: '#F0F4F8'}}>Email</FormLabel>
                                     <Input
@@ -122,7 +180,20 @@ export default function ForgetPassword() {
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </FormControl>
-                                <Stack gap={0} sx={{ mt: 2 }}>
+                                <FormControl required>
+                                    <FormLabel sx={{color: '#F0F4F8'}}>Password</FormLabel>
+                                    <Input
+                                        sx={{
+                                            backgroundColor: '#0B0D0E',
+                                            borderColor:'#32383E',
+                                            color: '#ffffff'
+                                        }}
+                                        type="password"
+                                        name="password"
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </FormControl>
+                                <Stack gap={4} sx={{ mt: 2 }}>
                                     <Box
                                         sx={{
                                             display: 'flex',
@@ -130,9 +201,29 @@ export default function ForgetPassword() {
                                             alignItems: 'center',
                                         }}
                                     >
+                                        <Checkbox
+                                            size="sm"
+                                            label="Remember me"
+                                            name="persistent"
+                                            sx={{
+                                                color: '#F0F4F8',
+                                                '& .MuiCheckbox-checkbox': {
+                                                    backgroundColor: '#0B0D0E',
+                                                    borderColor:'#32383E',
+                                                    borderRadius: '4px',
+                                                },
+                                                '& .MuiSvgIcon-root': {
+                                                    backgroundColor: '#0B6BCB',
+                                                    borderRadius: '4px',
+                                                },
+                                            }}
+                                        />
+                                        <Link level="title-sm" href="/forgetPassword" sx={{color: '#4393E4'}}>
+                                            Forgot your password?
+                                        </Link>
                                     </Box>
-                                    <Button type="submit" fullWidth onClick={handleForgetPassword}>
-                                        Send Reset Email
+                                    <Button type="submit" fullWidth>
+                                        Sign in
                                     </Button>
                                 </Stack>
                             </form>

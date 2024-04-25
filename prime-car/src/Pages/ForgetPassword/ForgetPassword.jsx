@@ -3,68 +3,26 @@ import GlobalStyles from '@mui/joy/GlobalStyles';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Box from '@mui/joy/Box';
 import Button from '@mui/joy/Button';
-import Checkbox from '@mui/joy/Checkbox';
-import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import Link from '@mui/joy/Link';
 import Input from '@mui/joy/Input';
 import Typography from '@mui/joy/Typography';
 import Stack from '@mui/joy/Stack';
-import GoogleIcon from './GoogleIcon';
-import { supabase } from '../../../assets/supabaseClient';
+import { supabase } from '../../assets/supabaseClient';
 
-export default function SignIn() {
+export default function ForgetPassword() {
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
-    const handleLoginGoogle = async (event) => {
-        event.preventDefault();
+    const handleForgetPassword = async () => {
         try {
-
-            const { data, error } = await supabase.auth.signInWithOAuth({
-                provider: 'google',
-                options: {
-                    redirectTo: '/'
-                }
-            })
-
+            const { error } = await supabase.auth.resetPasswordForEmail(email);
             if (error) {
-                console.error('Error logging in:', error.message);
-                alert('Error logging in: ' + error.message);
+                throw error;
             }
-                else {
-                    console.log('User logged in:', email);
-                    alert('Thanks for logging in! ' + email);
-            }
-            // Redirect or perform other actions upon successful login
+            alert('Password reset email sent!');
         } catch (error) {
-            console.error('Error logging in ', error.message);
-            alert('Error logging in: ' + error.message);
-            // Handle login error, e.g., display an error message to the user
-        }
-    }
-    const handleLogin = async (event) => {
-        event.preventDefault();
-        try {
-            const { error } = await supabase.auth.signInWithPassword({
-                email: email,
-                password: password,
-            });
-
-            if (error) {
-                console.error('Error logging in:', error.message);
-                alert('Error logging in: ' + error.message);
-            }
-                else{
-                    console.log('User logged in:', email);
-                    alert('Thanks for logging in! ' + email);
-            }
-            // Redirect or perform other actions upon successful login
-        } catch (error) {
-            console.error('Error logging in ', error.message);
-            alert('Error logging in: ' + error.message);
-            // Handle login error, e.g., display an error message to the user
+            alert(error.message);
         }
     };
 
@@ -97,6 +55,7 @@ export default function SignIn() {
                         minHeight: '100vh',
                         width: '100%',
                         px: 2,
+                        justifyContent: 'center',
                     }}
                 >
                     <Link
@@ -120,7 +79,7 @@ export default function SignIn() {
                     <Box
                         component="main"
                         sx={{
-                            my: 'auto',
+                            my: '5vh',
                             py: 2,
                             pb: 5,
                             display: 'flex',
@@ -143,30 +102,13 @@ export default function SignIn() {
                         <Stack gap={4} sx={{ mb: 2 }}>
                             <Stack gap={1}>
                                 <Typography component="h1" level="h3" sx={{color: '#CDD7E1'}}>
-                                    Sign in
-                                </Typography>
-                                <Typography level="body-sm" sx={{color: '#9FA6AD'}}>
-                                    New at Prime Car?{' '}
-                                    <Link href="/signUp" level="title-sm" sx={{color: '#4393E4'}}>
-                                        Sign up!
-                                    </Link>
+                                    Forget Password
                                 </Typography>
                             </Stack>
-                            <Button onClick={handleLoginGoogle}
-                                variant="soft"
-                                sx={{
-                                    backgroundColor: '#171A1C',
-                                    color: 'White'
-                                }}
-                                fullWidth
-                                startDecorator={<GoogleIcon />}
-                            >
-                                Continue with Google
-                            </Button>
                         </Stack>
-                        <Divider sx={{color: '#9FA6AD'}}>or</Divider>
-                        <Stack gap={4} sx={{ mt: 2 }}>
-                            <form onSubmit={handleLogin}>
+
+                        <Stack gap={4} sx={{ mt: 0 }}>
+                            <form>
                                 <FormControl required>
                                     <FormLabel sx={{color: '#F0F4F8'}}>Email</FormLabel>
                                     <Input
@@ -180,20 +122,7 @@ export default function SignIn() {
                                         onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </FormControl>
-                                <FormControl required>
-                                    <FormLabel sx={{color: '#F0F4F8'}}>Password</FormLabel>
-                                    <Input
-                                        sx={{
-                                            backgroundColor: '#0B0D0E',
-                                            borderColor:'#32383E',
-                                            color: '#ffffff'
-                                        }}
-                                        type="password"
-                                        name="password"
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    />
-                                </FormControl>
-                                <Stack gap={4} sx={{ mt: 2 }}>
+                                <Stack gap={0} sx={{ mt: 2 }}>
                                     <Box
                                         sx={{
                                             display: 'flex',
@@ -201,35 +130,15 @@ export default function SignIn() {
                                             alignItems: 'center',
                                         }}
                                     >
-                                        <Checkbox
-                                            size="sm"
-                                            label="Remember me"
-                                            name="persistent"
-                                            sx={{
-                                                color: '#F0F4F8',
-                                                '& .MuiCheckbox-checkbox': {
-                                                    backgroundColor: '#0B0D0E',
-                                                    borderColor:'#32383E',
-                                                    borderRadius: '4px',
-                                                },
-                                                '& .MuiSvgIcon-root': {
-                                                    backgroundColor: '#0B6BCB',
-                                                    borderRadius: '4px',
-                                                },
-                                            }}
-                                        />
-                                        <Link level="title-sm" href="/forgetPassword" sx={{color: '#4393E4'}}>
-                                            Forgot your password?
-                                        </Link>
                                     </Box>
-                                    <Button type="submit" fullWidth>
-                                        Sign in
+                                    <Button type="submit" fullWidth onClick={handleForgetPassword}>
+                                        Send Reset Email
                                     </Button>
                                 </Stack>
                             </form>
                         </Stack>
                     </Box>
-                    <Box component="footer" sx={{ py: 3 }}>
+                    <Box component="footer" sx={{ py: 30 }}>
                         <Typography level="body-xs" textAlign="center" sx={{color: '#9FA6AD'}}>
                             © Prime Car {new Date().getFullYear()}
                         </Typography>

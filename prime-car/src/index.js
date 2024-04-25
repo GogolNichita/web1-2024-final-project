@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import MainPage from "./Pages/MainPage";
-import SignIn from "./Components/Accout-Components/SignIn/SignIn";
+import SignIn from "./Pages/SignIn/SignIn";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Account from "./Pages/Account";
-import SignUp from "./Components/Accout-Components/SignUp/SignUp";
-import ForgetPassword from "./Components/Accout-Components/ForgetPassword/ForgetPassword";
+import SignUp from "./Pages/SignUp/SignUp";
+import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
 
 const router = createBrowserRouter([
     {
